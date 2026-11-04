@@ -1,812 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brajkant Sharma | Portfolio</title>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --bg-color: #f8fafc;
-            --bg-gradient: radial-gradient(circle at 10% 20%, rgba(37, 99, 235, 0.05) 0%, transparent 40%),
-                                radial-gradient(circle at 90% 80%, rgba(99, 102, 241, 0.05) 0%, transparent 40%);
-            --text-color: #1e293b;
-            --text-muted: #64748b;
-            --card-bg: #ffffff;
-            --primary-color: #2563eb;
-            --primary-hover: #1d4ed8;
-            --accent-glow: rgba(37, 99, 235, 0.15);
-            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
-            --shadow-hover: 0 20px 25px -5px rgba(37, 99, 235, 0.1), 0 10px 10px -5px rgba(37, 99, 235, 0.04);
-            --border-color: #e2e8f0;
-            --nav-bg: rgba(255, 255, 255, 0.85);
-        }
-
-        .dark-mode {
-            --bg-color: #0b0f19;
-            --bg-gradient: radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
-                                radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.08) 0%, transparent 50%);
-            --text-color: #f8fafc;
-            --text-muted: #94a3b8;
-            --card-bg: #131b2e;
-            --primary-color: #3b82f6;
-            --primary-hover: #60a5fa;
-            --accent-glow: rgba(59, 130, 246, 0.25);
-            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
-            --shadow-hover: 0 20px 30px -5px rgba(0, 0, 0, 0.7);
-            --border-color: #1e293b;
-            --nav-bg: rgba(11, 15, 25, 0.85);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            scroll-behavior: smooth;
-            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.2s ease;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            background-image: var(--bg-gradient);
-            background-attachment: fixed;
-            color: var(--text-color);
-            line-height: 1.65;
-            overflow-x: hidden;
-        }
-
-        /* Header & Navigation */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: var(--nav-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            box-shadow: var(--shadow);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.1rem 8%;
-            z-index: 1000;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .logo {
-            font-size: 1.4rem;
-            font-weight: 800;
-            color: var(--primary-color);
-            letter-spacing: -0.5px;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .logo span {
-            color: var(--text-color);
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: var(--text-muted);
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: color 0.2s;
-            position: relative;
-        }
-
-        nav ul li a:hover,
-        nav ul li a.active {
-            color: var(--primary-color);
-        }
-
-        .theme-toggle {
-            cursor: pointer;
-            font-size: 1.1rem;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            color: var(--text-color);
-            padding: 0.5rem;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 38px;
-            height: 38px;
-            box-shadow: var(--shadow);
-        }
-
-        .theme-toggle:hover {
-            color: var(--primary-color);
-            transform: scale(1.05);
-        }
-
-        .hamburger {
-            display: none;
-            cursor: pointer;
-            font-size: 1.3rem;
-            color: var(--text-color);
-            background: none;
-            border: none;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 10rem 8% 5rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            min-height: 92vh;
-            justify-content: center;
-            position: relative;
-        }
-
-        .badge-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--accent-glow);
-            color: var(--primary-color);
-            padding: 0.4rem 1.2rem;
-            border-radius: 9999px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 1.5rem;
-            border: 1px solid var(--primary-color);
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-            letter-spacing: -1px;
-        }
-
-        .hero h1 span {
-            color: var(--primary-color);
-            background: linear-gradient(135deg, #2563eb, #8b5cf6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .typewriter-container {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            min-height: 2.2rem;
-        }
-
-        .cursor {
-            display: inline-block;
-            background-color: var(--primary-color);
-            width: 2px;
-            margin-left: 2px;
-            animation: blink 1s infinite;
-        }
-
-        @keyframes blink {
-            0%, 49% { opacity: 1; }
-            50%, 100% { opacity: 0; }
-        }
-
-        .btn-container {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.85rem 1.8rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.25s ease;
-        }
-
-        .btn-primary {
-            background-color: var(--primary-color);
-            color: #ffffff;
-            box-shadow: 0 4px 14px var(--accent-glow);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--primary-hover);
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            color: var(--text-color);
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--primary-color);
-            color: var(--primary-color);
-            transform: translateY(-2px);
-        }
-
-        /* Generic Section Styling */
-        section {
-            padding: 6rem 8%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-header h2 {
-            font-size: 2.3rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            margin-bottom: 0.5rem;
-        }
-
-        .section-header p {
-            color: var(--text-muted);
-            font-size: 1rem;
-        }
-
-        /* About & Education */
-        .about-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-
-        .card {
-            background-color: var(--card-bg);
-            padding: 2.2rem;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border-color);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .card h3 {
-            margin-bottom: 1.2rem;
-            color: var(--primary-color);
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            font-size: 1.3rem;
-        }
-
-        .timeline-item {
-            position: relative;
-            padding-left: 1.2rem;
-            border-left: 2px solid var(--border-color);
-            margin-bottom: 1.2rem;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -5px;
-            top: 6px;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background-color: var(--primary-color);
-        }
-
-        /* Skills Section */
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .skill-category {
-            background-color: var(--card-bg);
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border-color);
-            transition: transform 0.3s ease;
-        }
-
-        .skill-category:hover {
-            transform: translateY(-4px);
-        }
-
-        .skill-category h3 {
-            margin-bottom: 1.2rem;
-            font-size: 1.15rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--primary-color);
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.6rem;
-        }
-
-        .tag {
-            background-color: var(--bg-color);
-            padding: 0.5rem 0.9rem;
-            border-radius: 6px;
-            font-size: 0.88rem;
-            font-weight: 500;
-            border: 1px solid var(--border-color);
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
-
-        /* Projects Section */
-        .project-card {
-            background-color: var(--card-bg);
-            padding: 2.5rem;
-            border-radius: 14px;
-            box-shadow: var(--shadow);
-            max-width: 650px;
-            margin: 0 auto;
-            border: 1px solid var(--border-color);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #2563eb, #8b5cf6);
-        }
-
-        .project-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.75rem;
-            color: var(--text-color);
-        }
-
-        .project-card p {
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-        }
-
-        /* Contact Section */
-        .contact-content {
-            background-color: var(--card-bg);
-            padding: 3.5rem 2rem;
-            border-radius: 14px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border-color);
-            max-width: 700px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .email-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background-color: var(--bg-color);
-            border: 1px solid var(--border-color);
-            padding: 0.6rem 1.2rem;
-            border-radius: 8px;
-            margin: 1.5rem 0;
-            font-weight: 600;
-            cursor: pointer;
-            position: relative;
-        }
-
-        .email-badge:hover {
-            border-color: var(--primary-color);
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.2rem;
-            margin-top: 1rem;
-        }
-
-        .social-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background-color: var(--bg-color);
-            border: 1px solid var(--border-color);
-            color: var(--text-color);
-            font-size: 1.2rem;
-            text-decoration: none;
-            transition: all 0.25s ease;
-        }
-
-        .social-btn:hover {
-            background-color: var(--primary-color);
-            color: #ffffff;
-            border-color: var(--primary-color);
-            transform: translateY(-3px);
-        }
-
-        /* Scroll Top Button */
-        .scroll-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 45px;
-            height: 45px;
-            font-size: 1rem;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s;
-            z-index: 99;
-        }
-
-        .scroll-top.show {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 2rem 5%;
-            background-color: var(--card-bg);
-            border-top: 1px solid var(--border-color);
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        /* Scroll Reveal Animation */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Responsive Breakpoints */
-        @media (max-width: 768px) {
-            .hamburger {
-                display: block;
-            }
-
-            nav ul {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: var(--card-bg);
-                flex-direction: column;
-                gap: 1.5rem;
-                padding: 2rem 0;
-                border-bottom: 1px solid var(--border-color);
-                box-shadow: var(--shadow);
-                display: none;
-            }
-
-            nav ul.open {
-                display: flex;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            section {
-                padding: 4rem 6%;
-            }
-        }
-    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Brajkant | Portfolio</title>
+    <link rel="stylesheet" href="./style.css">
 </head>
-<body>
 
-    <!-- Header & Navigation -->
+<body>
     <header>
-        <div class="logo">
-            <i class="fa-solid fa-code"></i> Brajkant<span>.</span>
-        </div>
-        <nav>
-            <ul id="navLinks">
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#skills" class="nav-link">Skills</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-                <li>
-                    <button class="theme-toggle" id="themeToggle" title="Toggle Theme" aria-label="Toggle Theme">
-                        <i class="fa-solid fa-moon"></i>
-                    </button>
-                </li>
-            </ul>
+        <div class="logo" data-name>Brajkant</div>
+        <nav id="nav">
+            <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#certs">Certificates</a><a href="#resumes">Resumes</a><a
+                href="#contact">Contact</a>
         </nav>
-        <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
-            <i class="fa-solid fa-bars"></i>
-        </button>
+        <div class="hbtns"><button class="ib" id="theme" aria-label="Toggle dark mode">🌓</button><button class="ib"
+                id="menu" aria-label="Open menu">☰</button></div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero reveal">
-        <div class="badge-pill">
-            <i class="fa-solid fa-circle-dot fa-fade"></i> Open to Opportunities
-        </div>
-        <h1>Hi, I'm <span>Brajkant Sharma</span></h1>
-        <div class="typewriter-container">
-            <span id="typewriter"></span><span class="cursor">&nbsp;</span>
-        </div>
-        <div class="btn-container">
-            <a href="#projects" class="btn btn-primary"><i class="fa-solid fa-layer-group"></i> View Projects</a>
-            <a href="#contact" class="btn btn-secondary"><i class="fa-solid fa-paper-plane"></i> Contact Me</a>
-        </div>
-    </section>
+    <main>
+        <section class="hero" id="top">
+            <h1>Hi, I’m <span data-name>Brajkant</span></h1>
+            <p>B.Sc. graduate and PGDCA student from Kanpur. I build Python programs and web apps, and I’m looking for a
+                junior or trainee role.</p>
+            <div class="row"><a class="btn" href="#projects">View projects</a><a class="btn o" href="#resumes">Get my
+                    resume</a><a class="btn o" href="#contact">Contact</a></div>
+        </section>
 
-    <!-- About & Education Section -->
-    <section id="about" class="reveal">
-        <div class="section-header">
-            <h2>About & Background</h2>
-            <p>A quick look into my academic journey and technical foundation</p>
-        </div>
-        <div class="about-grid">
-            <div class="card">
-                <h3><i class="fa-solid fa-graduation-cap"></i> Education</h3>
-                <div class="timeline-item">
-                    <strong style="color: var(--text-color);">PG Diploma in Computer Application (PGDCA)</strong>
-                    <p style="font-size: 0.9rem; color: var(--text-muted);">Board of Technical Education Uttar Pradesh (BTEUP)</p>
+        <section id="about">
+            <h2>About and education</h2>
+            <p class="lead">Learning by building: every project below is something I made and can explain.</p>
+            <div class="grid">
+                <div class="card">
+                    <h3>PGDCA</h3><b>Post Graduate Diploma in Computer Applications</b><span class="muted">Government
+                        Polytechnic, Kanpur · 2025 – 2027 (pursuing)</span>
                 </div>
-                <div class="timeline-item" style="margin-bottom: 0;">
-                    <strong style="color: var(--text-color);">Bachelor of Science (B.Sc)</strong>
-                    <p style="font-size: 0.9rem; color: var(--text-muted);">CSJMU Kanpur</p>
+                <div class="card">
+                    <h3>B.Sc. (Zoology)</h3><b>Chhatrapati Shahu Ji Maharaj University, Kanpur</b><span
+                        class="muted">2022 – 2025</span>
+                </div>
+                <div class="card">
+                    <h3>Objective</h3><span>To start my career as a developer, applying Python, web and database skills
+                        to build reliable software and keep improving every month.</span>
                 </div>
             </div>
-            <div class="card">
-                <h3><i class="fa-solid fa-compass"></i> Profile & Goal</h3>
-                <p style="color: var(--text-muted);">
-                    Aspiring software and computer application professional focused on developing responsive, reliable web solutions. Strong background in Python, MySQL, algorithmic problem-solving, and modern frontend practices.
-                </p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="reveal">
-        <div class="section-header">
-            <h2>Technical Skills</h2>
-            <p>Technologies, languages, and tools I use to bring ideas to life</p>
-        </div>
-        <div class="skills-container">
-            <div class="skill-category">
-                <h3><i class="fa-solid fa-palette"></i> Frontend</h3>
-                <div class="skill-tags">
-                    <span class="tag"><i class="fa-brands fa-html5" style="color: #e34f26;"></i> HTML5</span>
-                    <span class="tag"><i class="fa-brands fa-css3-alt" style="color: #1572b6;"></i> CSS3</span>
-                    <span class="tag"><i class="fa-brands fa-js" style="color: #f7df1e;"></i> JavaScript</span>
+        <section id="skills">
+            <h2>Skills</h2>
+            <p class="lead">Levels are stated honestly.</p>
+            <div class="grid">
+                <div class="card">
+                    <h3>Languages</h3>
+                    <div class="tags"><span>Python, intermediate</span><span>JavaScript, intermediate</span><span>Java,
+                            basic</span><span>SQL</span></div>
+                </div>
+                <div class="card">
+                    <h3>Backend and database</h3>
+                    <div class="tags"><span>REST APIs</span><span>Node.js, basic</span><span>Express,
+                            basic</span><span>MySQL</span><span>JSON</span></div>
+                </div>
+                <div class="card">
+                    <h3>Frontend</h3>
+                    <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Responsive
+                            design</span></div>
+                </div>
+                <div class="card">
+                    <h3>Fundamentals</h3>
+                    <div class="tags"><span>OOP</span><span>Data structures</span><span>Algorithms</span><span>Exception
+                            handling</span><span>File handling</span></div>
+                </div>
+                <div class="card">
+                    <h3>Data and accounts</h3>
+                    <div class="tags"><span>MS Excel</span><span>Pivot tables</span><span>Power BI</span><span>Tally ERP
+                            9</span><span>Typing 30 WPM</span></div>
+                </div>
+                <div class="card">
+                    <h3>Tools</h3>
+                    <div class="tags"><span>Git</span><span>GitHub</span><span>VS
+                            Code</span><span>Vercel</span><span>Render</span></div>
                 </div>
             </div>
-            <div class="skill-category">
-                <h3><i class="fa-solid fa-server"></i> Backend & Data</h3>
-                <div class="skill-tags">
-                    <span class="tag"><i class="fa-brands fa-python" style="color: #3776ab;"></i> Python</span>
-                    <span class="tag"><i class="fa-solid fa-database" style="color: #00758f;"></i> MySQL</span>
-                    <span class="tag"><i class="fa-solid fa-diagram-project"></i> DSA</span>
-                </div>
-            </div>
-            <div class="skill-category">
-                <h3><i class="fa-solid fa-screwdriver-wrench"></i> Tools & Productivity</h3>
-                <div class="skill-tags">
-                    <span class="tag"><i class="fa-brands fa-git-alt" style="color: #f05032;"></i> Git & GitHub</span>
-                    <span class="tag"><i class="fa-solid fa-chart-column" style="color: #f2c811;"></i> PowerBI</span>
-                    <span class="tag"><i class="fa-solid fa-file-excel" style="color: #107c41;"></i> MS Office</span>
-                    <span class="tag"><i class="fa-solid fa-calculator"></i> Tally ERP 9</span>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="reveal">
-        <div class="section-header">
-            <h2>Featured Projects</h2>
-            <p>Selected applications and work showcasing my technical skills</p>
-        </div>
-        <div class="project-card">
-            <h3>Bk LearnX</h3>
-            <p>An interactive, intuitive learning management platform designed to deliver educational modules with clean coding architectures and a responsive UI.</p>
-            <div class="skill-tags" style="margin-bottom: 1.5rem;">
-                <span class="tag">HTML5 / CSS3</span>
-                <span class="tag">JavaScript</span>
-                <span class="tag">Python</span>
-            </div>
-            <div style="display: flex; gap: 1rem;">
-                <a href="https://github.com/Brajkant02/Bk-LearnX" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-                    <i class="fa-brands fa-github"></i> Source Code
-                </a>
-            </div>
-        </div>
-    </section>
+        <section id="projects">
+            <h2>Projects</h2>
+            <p class="lead">Four projects across Python, web and data.</p>
+            <div class="grid" id="projList"></div>
+        </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="reveal">
-        <div class="section-header">
-            <h2>Get In Touch</h2>
-            <p>Have a question or interested in working together? Drop a line.</p>
-        </div>
-        <div class="contact-content">
-            <p style="color: var(--text-muted);">
-                Feel free to email me directly or find me on my social accounts:
-            </p>
-            <div>
-                <div class="email-badge" id="copyEmailBtn" title="Click to copy email">
-                    <i class="fa-solid fa-envelope" style="color: var(--primary-color);"></i>
-                    <span id="emailText">brajkant02@gmail.com</span>
-                    <i class="fa-regular fa-copy" id="copyIcon"></i>
-                </div>
-            </div>
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/brajkant-sharma-2b027b402/" target="_blank" rel="noopener noreferrer" class="social-btn" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-                <a href="https://github.com/Brajkant02" target="_blank" rel="noopener noreferrer" class="social-btn" title="GitHub"><i class="fa-brands fa-github"></i></a>
-                <a href="https://instagram.com/brajkant01" target="_blank" rel="noopener noreferrer" class="social-btn" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            </div>
-        </div>
-    </section>
+        <section id="marks" class="hide">
+            <h2>Subject-wise marks</h2>
+            <p class="lead">My results by subject.</p>
+            <form class="editonly" id="marksForm">
+                <div class="f">
+                    <input name="s" placeholder="Subject" required maxlength="60"><input name="o" type="number"
+                        step="any" min="0" placeholder="Marks obtained" required><input name="t" type="number"
+                        step="any" min="1" placeholder="Total marks" required><input name="e"
+                        placeholder="Exam / semester" maxlength="60">
+                </div><button class="btn" type="submit">Add marks</button>
+            </form>
+            <div class="grid" id="marksList"></div>
+        </section>
 
-    <!-- Footer -->
+        <section id="certs" class="hide">
+            <h2>Certificates</h2>
+            <p class="lead">Courses and certifications.</p>
+            <form class="editonly" id="certForm">
+                <div class="f">
+                    <input name="t" placeholder="Certificate title" required maxlength="80"><input name="i"
+                        placeholder="Issued by" required maxlength="80"><input name="y" placeholder="Year"
+                        maxlength="20"><input name="l" type="url" placeholder="Link to certificate (optional)">
+                </div><button class="btn" type="submit">Add certificate</button>
+            </form>
+            <div class="grid" id="certList"></div>
+        </section>
+
+        <section id="resumes">
+            <h2>Resumes by role</h2>
+            <p class="lead">Pick a role, then save it as a PDF. Each resume shows only what fits that job.</p>
+            <div class="tabs noprint" id="tabs"></div>
+            <div class="paper" id="paper"></div>
+            <div class="row noprint"><button class="btn" id="print">Download as PDF</button></div>
+            <p class="muted noprint">In the print window, choose “Save as PDF”.</p>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <p class="lead">Open to junior and trainee roles. Write to me anytime.</p>
+            <div class="row"><a class="btn" href="mailto:brajkant02@gmail.com">brajkant02@gmail.com</a><a class="btn o"
+                    href="https://github.com/Brajkant02" target="_blank" rel="noopener">GitHub</a><a class="btn o"
+                    href="https://www.linkedin.com/in/brajkant-sharma-2b027b402/" target="_blank"
+                    rel="noopener">LinkedIn</a></div>
+        </section>
+    </main>
+
     <footer>
-        <p>&copy; 2026 Brajkant Sharma. Built with precision and care.</p>
+        <div>© 2026 <span data-name>Brajkant</span>. Kanpur, India.</div>
+        <button class="ib" id="edit">Edit mode</button>
+        <div class="editonly" style="margin-top:1rem;text-align:left;max-width:40rem;margin-inline:auto">
+            <p>Changes are saved in this browser only. To show them to everyone, press Export, copy the text, and paste
+                it over <code>DEFAULTS</code> in index.html, then push to GitHub.</p>
+            <button class="ib" id="export">Export</button> <button class="ib" id="reset">Reset</button>
+            <pre id="exp" class="hide"></pre>
+        </div>
     </footer>
 
-    <!-- Scroll to Top Button -->
-    <button class="scroll-top" id="scrollTopBtn" title="Go to top" aria-label="Go to top">
-        <i class="fa-solid fa-arrow-up"></i>
-    </button>
-
-    <script>
-        // --- 1. Theme Toggle with Local Storage ---
-        const themeToggleBtn = document.getElementById('themeToggle');
-        const themeIcon = themeToggleBtn.querySelector('i');
-        const currentTheme = localStorage.getItem('theme');
-
-        if (currentTheme === 'dark') {
-            document.body.classList.add('dark-mode');
-            themeIcon.classList.replace('fa-moon', 'fa-sun');
-        }
-
-        themeToggleBtn.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            const isDark = document.body.classList.contains('dark-mode');
-            themeIcon.classList.replace(isDark ? 'fa-moon' : 'fa-sun', isDark ? 'fa-sun' : 'fa-moon');
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        });
-
-        // --- 2. Mobile Hamburger Menu ---
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('navLinks');
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('open');
-            const icon = hamburger.querySelector('i');
-            icon.classList.toggle('fa-bars');
-            icon.classList.toggle('fa-xmark');
-        });
-
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('open');
-                const icon = hamburger.querySelector('i');
-                icon.classList.add('fa-bars');
-                icon.classList.remove('fa-xmark');
-            });
-        });
-
-        // --- 3. Typewriter Effect ---
-        const words = ["Computer Application Graduate", "Software Enthusiast", "Frontend Developer", "Python Programmer"];
-        let wordIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        const typewriterEl = document.getElementById("typewriter");
-
-        function type() {
-            const currentWord = words[wordIndex];
-            if (isDeleting) {
-                typewriterEl.textContent = currentWord.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                typewriterEl.textContent = currentWord.substring(0, charIndex + 1);
-                charIndex++;
-            }
-
-            let typeSpeed = isDeleting ? 40 : 90;
-
-            if (!isDeleting && charIndex === currentWord.length) {
-                typeSpeed = 2000; // Pause at full word
-                isDeleting = true;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                wordIndex = (wordIndex + 1) % words.length;
-                typeSpeed = 400;
-            }
-
-            setTimeout(type, typeSpeed);
-        }
-        document.addEventListener('DOMContentLoaded', type);
-
-        // --- 4. Scroll Reveal Animations ---
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-        // --- 5. Back to Top Button ---
-        const scrollTopBtn = document.getElementById('scrollTopBtn');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                scrollTopBtn.classList.add('show');
-            } else {
-                scrollTopBtn.classList.remove('show');
-            }
-        });
-        scrollTopBtn.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-
-        // --- 6. Quick Copy Email Feature ---
-        const copyEmailBtn = document.getElementById('copyEmailBtn');
-        copyEmailBtn.addEventListener('click', () => {
-            const email = document.getElementById('emailText').innerText;
-            navigator.clipboard.writeText(email).then(() => {
-                const copyIcon = document.getElementById('copyIcon');
-                copyIcon.classList.replace('fa-copy', 'fa-check');
-                setTimeout(() => {
-                    copyIcon.classList.replace('fa-check', 'fa-copy');
-                }, 2000);
-            });
-        });
+    <script src="./script.js" type="module"></script>
     </script>
 </body>
+
 </html>
